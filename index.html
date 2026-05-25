@@ -78,7 +78,6 @@ nav.scrolled{
     radial-gradient(circle at 50% 50%, rgba(245,240,232,0.9), transparent 70%),
     var(--cream);
 }
-/* Decorative mandala-like SVG overlay */
 .hero-deco{
   position:absolute; inset:0; pointer-events:none; opacity:0.07;
   background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%238b1a1a' fill-opacity='1'%3E%3Cpath d='M40 0 L43 37 L40 40 L37 37 Z M40 80 L43 43 L40 40 L37 43 Z M0 40 L37 37 L40 40 L37 43 Z M80 40 L43 37 L40 40 L43 43 Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
@@ -97,21 +96,16 @@ nav.scrolled{
   text-transform:uppercase; color:var(--text-light); margin-bottom:20px;
   animation: fadeUp 1.2s 0.2s ease both;
 }
-.hero-ornament{
-  display:flex; align-items:center; justify-content:center; gap:12px;
-  margin-bottom:16px; animation: fadeUp 1.2s 0.3s ease both;
+.hero-logo{
+  max-width:420px;
+  height:auto;
+  margin:0 auto 24px;
+  animation: fadeUp 1.2s 0.3s ease both;
 }
-.orn-line{ flex:1; max-width:80px; height:1px; background:linear-gradient(to right, transparent, var(--gold)); }
-.orn-line.right{ background:linear-gradient(to left, transparent, var(--gold)); }
-.orn-diamond{ width:6px; height:6px; background:var(--gold); transform:rotate(45deg); }
-.hero-title{
-  font-family:'Cinzel',serif; font-size:clamp(3.5rem,9vw,7.5rem); line-height:0.95;
-  letter-spacing:0.06em; animation: fadeUp 1.2s 0.4s ease both;
-}
-.hero-title .in{ color:var(--deep-red); }
 .hero-subtitle{
-  margin-top:12px; font-size:0.75rem; letter-spacing:0.35em; color:var(--text-light);
-  text-transform:uppercase; animation: fadeUp 1.2s 0.5s ease both;
+  font-family:'Cinzel',serif; font-size:0.75rem; letter-spacing:0.35em;
+  color:var(--text-light); text-transform:uppercase; margin-bottom:40px;
+  animation: fadeUp 1.2s 0.5s ease both;
 }
 .hero-tagline{
   font-family:'Cormorant Garamond',serif; font-size:clamp(1.2rem,2.4vw,1.7rem);
@@ -386,8 +380,27 @@ footer{ background:var(--text-dark); color:white; padding:60px 60px 30px; }
   .hero-cta-group{ flex-direction:column; }
   .form-row{ grid-template-columns:1fr; }
   .footer-top{ grid-template-columns:1fr; }
-  nav{ padding:16px 20px; }
+  .hero-logo{ max-width:320px; }
 }
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh; 
+  position:relative;
+  display:flex; 
+  align-items:center; 
+  justify-content:center; 
+  overflow:hidden;
+}
+
+.hero-bg{
+  position:absolute; 
+  inset:0;
+  background: url('HERO BG.jpeg') center/cover no-repeat;
+  filter: brightness(0.85) contrast(1.1); /* Optional - adjust if needed */
+}
+
+/* Remove the old gradient background if you want pure image */
 </style>
 </head>
 <body>
@@ -406,20 +419,17 @@ footer{ background:var(--text-dark); color:white; padding:60px 60px 30px; }
   </ul>
 </nav>
 
-<!-- ═══════════════════════════════════
-     SECTION 1 — HERO
-═══════════════════════════════════ -->
+<!-- HERO -->
+<!-- HERO -->
 <section id="hero">
   <div class="hero-bg"></div>
   <div class="hero-deco"></div>
   <div class="hero-content">
     <div class="hero-eyebrow">Philippines → India · October 2026</div>
-    <div class="hero-ornament">
-      <div class="orn-line"></div>
-      <div class="orn-diamond"></div>
-      <div class="orn-line right"></div>
-    </div>
-    <h1 class="hero-title"><span class="in">IN</span>DIA<br>CALLING</h1>
+    
+    <!-- Logo Image -->
+    <img src="logo.png" alt="India Calling" class="hero-logo">
+    
     <div class="hero-subtitle">Beyond Borders · Beyond Ordinary</div>
     <p class="hero-tagline">
       Curated journeys through culture,<br>wellness & refined Indian experiences.
@@ -431,22 +441,12 @@ footer{ background:var(--text-dark); color:white; padding:60px 60px 30px; }
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     SECTION 2 — INTRODUCTION
-═══════════════════════════════════ -->
+<!-- INTRODUCTION -->
 <section id="intro">
   <div class="section-inner">
     <div class="intro-layout">
-
       <div class="intro-image-stack">
-        <img
-          class="intro-img-main"
-          src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?q=80&w=1200&auto=format&fit=crop"
-          alt="India Heritage">
-        <img
-          class="intro-img-accent"
-          src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=800&auto=format&fit=crop"
-          alt="Kerala Backwaters">
+        <img src="monuments.jpg" alt="India Monuments" class="intro-img-main">
       </div>
 
       <div>
@@ -471,14 +471,11 @@ footer{ background:var(--text-dark); color:white; padding:60px 60px 30px; }
           "The most meaningful journeys are the ones that reconnect us not only with new cultures, but also with ourselves."
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     SECTION 3 — CULTURE · WELLNESS · LUXURY
-═══════════════════════════════════ -->
+<!-- PILLARS -->
 <section id="pillars">
   <div class="section-inner" style="padding-bottom:0;">
     <div class="pillars-header">
@@ -487,7 +484,6 @@ footer{ background:var(--text-dark); color:white; padding:60px 60px 30px; }
     </div>
   </div>
   <div class="pillars-grid" style="max-width:1200px;margin:0 auto;">
-
     <div class="pillar-card">
       <div class="pillar-accent"></div>
       <span class="pillar-icon">🏛</span>
@@ -497,7 +493,6 @@ footer{ background:var(--text-dark); color:white; padding:60px 60px 30px; }
         <li>Living traditions</li>
       </ul>
     </div>
-
     <div class="pillar-card">
       <div class="pillar-accent"></div>
       <span class="pillar-icon">🪷</span>
@@ -507,7 +502,6 @@ footer{ background:var(--text-dark); color:white; padding:60px 60px 30px; }
         <li>Inner balance</li>
       </ul>
     </div>
-
     <div class="pillar-card">
       <div class="pillar-accent"></div>
       <span class="pillar-icon">✦</span>
@@ -517,27 +511,26 @@ footer{ background:var(--text-dark); color:white; padding:60px 60px 30px; }
         <li>Refined comfort</li>
       </ul>
     </div>
-
   </div>
   <div style="height:100px;"></div>
 </section>
 
-<!-- ═══════════════════════════════════
-     SECTION 4 — UPCOMING JOURNEY
-═══════════════════════════════════ -->
+<!-- JOURNEY -->
 <section id="journey">
   <div class="journey-bg-text">INDIA</div>
   <div class="journey-inner">
-
     <div>
       <div class="journey-label">Upcoming Journey · First Flight</div>
       <h2 class="journey-title">The Golden<br>Triangle</h2>
       <div class="journey-route">Delhi · Agra · Jaipur</div>
       <div class="journey-date">8th – 18th October 2026</div>
       <p class="journey-desc">
-        A thoughtfully curated journey through India's iconic Golden Triangle —
-        blending heritage, culture, wellness, local experiences, and refined
-        hospitality. Our first flight to India from Manila, Philippines.
+        Discover the timeless charm of India through its most iconic route — Delhi, Agra, and Jaipur. 
+        From the bustling streets and rich history of Delhi to the breathtaking beauty of the Taj Mahal in Agra, 
+        and the royal palaces and vibrant culture of Jaipur, this journey blends heritage, architecture, 
+        local experiences, soulful moments, and refined hospitality. 
+        Thoughtfully curated by India Calling, this experience is designed to go beyond sightseeing — 
+        allowing you to truly connect with the spirit, stories, colors, and warmth of India.
       </p>
       <div class="journey-pills">
         <span class="journey-pill">Culture</span>
@@ -551,118 +544,97 @@ footer{ background:var(--text-dark); color:white; padding:60px 60px 30px; }
 
     <div class="journey-visual">
       <div class="journey-img-frame">
-        <img
-          src="https://images.unsplash.com/photo-1564507592333-c60657eea523?q=80&w=1200&auto=format&fit=crop"
-          alt="Taj Mahal">
+        <img src="https://images.unsplash.com/photo-1564507592333-c60657eea523?q=80&w=1200&auto=format&fit=crop" alt="Taj Mahal">
       </div>
       <div class="journey-overlay-card">
         <div class="joc-stat">October 2026</div>
         <div class="joc-label">First departure from Manila</div>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     SECTION 5 — ABOUT US
-═══════════════════════════════════ -->
+<!-- ABOUT -->
 <section id="about">
   <div class="section-inner">
+     <!-- Story Behind India Calling -->
+    <div class="about-full">
+      <div class="about-portrait-frame">
+        <img src="DEE.jpeg" alt="Dee Sharma">
+      </div>
+      <div>
+        <div class="section-label">The Story Behind India Calling</div>
+        <h2 class="section-title">The Story<br><span class="accent">Behind the Call</span></h2>
+        <p class="section-body">
+          India Calling was born from a deep love for India, travel, culture, and meaningful human connection.
+        </p>
+        <p class="section-body" style="margin-top:20px;">
+          Having lived across countries and experienced different cultures, I realized that the most memorable journeys are not just about places we visit, but about how those places make us feel. India, with all its richness, warmth, beauty, chaos, traditions, spirituality, and stories, has always had a way of touching people deeply.
+        </p>
+        <p class="section-body" style="margin-top:20px;">
+          Through India Calling, I wanted to create journeys that go beyond sightseeing — experiences that allow people to slow down, connect, discover, and truly feel the soul of India with comfort, authenticity, and heart.
+        </p>
+        <p class="section-body" style="margin-top:20px;">
+          Because sometimes, travel doesn’t just change where we are… it reconnects us with who we are.
+        </p>
+        <div class="about-quote">
+          “I’m not just planning this journey,<br>I’m taking it with you.”
+        </div>
+        <div class="about-signature">— Dee</div>
+      </div>
+    </div>
+    <br><br><br>
 
+     <!-- Team Introduction -->
     <div class="about-header">
       <div class="section-label">The People Behind India Calling</div>
       <h2 class="section-title">We're not guides.<br><span class="accent">We're fellow travellers.</span></h2>
     </div>
 
-    <!-- Three team cards -->
+    <!-- Team Cards -->
     <div class="about-cards">
-
       <div class="about-card">
         <div class="about-card-accent"></div>
-        <img
-          class="about-card-portrait"
-          src="DEE.jpeg"
-          alt="Dee">
+        <img class="about-card-portrait" src="DEE.jpeg" alt="Dee Sharma">
         <div class="about-card-role">Founder & Host</div>
-        <div class="about-card-name">Dee</div>
+        <div class="about-card-name">Dee Sharma</div>
         <p class="about-card-bio">
-          Born and raised in India, with a background in Marketing and PR — Kingfisher, Aviva — then 8 years in Singapore creating meaningful experiences. Now based in the Philippines, India Calling is born from her love for India, storytelling, and human connection.
+          Born and raised in India, I come from a background in Marketing and PR, having worked with corporates like Kingfisher and Aviva before moving to Singapore, where I spent 8 years working with an event-based company focused on creating meaningful experiences and connections.<br><br>
+          Now based in the Philippines, my journey across countries, cultures, and people eventually led to the creation of India Calling.
         </p>
       </div>
 
       <div class="about-card">
         <div class="about-card-accent"></div>
-        <div class="about-card-icon"></div>
+        <img class="about-card-portrait" src="SID.jpeg" alt="Captain Siddhartha “Sid” Sharma">
         <div class="about-card-role">Co-Founder & Journey Partner</div>
-        <div class="about-card-name">Captain Sid</div>
+        <div class="about-card-name">Captain Siddhartha “Sid” Sharma</div>
         <p class="about-card-bio">
-          Captain Siddhartha "Sid" Sharma spent 13 years sailing across the world as a Master Mariner before moving into shipping operations in Manila. A passionate Harley rider and explorer, his global experience brings a unique energy to every journey.
+          My husband Sid spent 13 years sailing across the world as a Master Mariner before moving into the corporate side of the shipping industry, where he now heads operations for a shipping company in Manila.<br><br>
+          A passionate Harley rider and explorer at heart, he shares the same love for travel, adventure, and meaningful experiences that inspired India Calling.
         </p>
       </div>
 
       <div class="about-card">
         <div class="about-card-accent"></div>
-        <img
-          class="about-card-portrait"
-          src="SHIVAY.jpeg"
-          alt="Dee">
+        <img class="about-card-portrait" src="SHIVAY.jpeg" alt="Shivaay Sharma">
         <div class="about-card-role">Chief Happiness Officer</div>
-        <div class="about-card-name">Shivaay</div>
+        <div class="about-card-name">Shivaay Sharma</div>
         <p class="about-card-bio">
-          The youngest member of India Calling and the heart behind many smiles. Filled with curiosity, laughter, and a love for discovering new places, Shivaay reminds us to travel with wonder, joy, and open hearts.
+          My son Shivaay is the youngest member of India Calling and the heart behind many smiles along the way.<br><br>
+          Filled with curiosity, laughter, endless energy, and a love for discovering new places, he reminds us to travel with wonder, joy, and open hearts.
         </p>
       </div>
-
     </div>
 
-    <!-- Dee's full story -->
-    <div class="about-full">
-
-      <div class="about-portrait-frame">
-        <img
-          src="DEE.jpeg"
-          alt="Dee">
-      </div>
-
-      <div>
-        <div class="section-label">A Note from Dee</div>
-        <h2 class="section-title">The Story<br><span class="accent">Behind the Call</span></h2>
-        <p class="section-body">
-          My journey across countries, cultures, and people eventually led to the creation
-          of India Calling — a space born from my love for India, storytelling, travel,
-          hospitality, and human connection.
-        </p>
-        <p class="section-body" style="margin-top:20px;">
-          For me, travel has always been more than just visiting places. I truly believe
-          the most meaningful journeys are the ones that reconnect us not only with new
-          cultures, but also with ourselves.
-        </p>
-        <p class="section-body" style="margin-top:20px;">
-          India Calling was created with the intention of offering thoughtfully curated
-          journeys that blend culture, comfort, wellness, community, and authentic
-          experiences — allowing travellers to truly feel the soul of India beyond the
-          usual itinerary.
-        </p>
-        <div class="about-quote">
-          "I'm not just planning this journey,<br>I'm taking it with you."
-        </div>
-        <div class="about-signature">♥ — Dee</div>
-      </div>
-
-    </div>
-
+   
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     SECTION 6 — CONTACT
-═══════════════════════════════════ -->
+<!-- CONTACT -->
 <section id="contact">
   <div class="section-inner">
-
     <div class="contact-layout">
-
       <div>
         <div class="section-label">Get in Touch</div>
         <h2 class="section-title">Begin Your<br><span class="accent">Journey</span></h2>
@@ -671,33 +643,28 @@ footer{ background:var(--text-dark); color:white; padding:60px 60px 30px; }
           start planning your journey together.
         </p>
         <div class="contact-details">
-
           <div class="cd-item">
             <div class="cd-label">Instagram</div>
             <div class="cd-value">
               <a href="https://instagram.com/india.callingg" target="_blank">@india.callingg</a>
             </div>
           </div>
-
           <div class="cd-item">
             <div class="cd-label">WhatsApp (Philippines)</div>
             <div class="cd-value">
               <a href="https://wa.me/639627991584">+63 962 799 1584</a>
             </div>
           </div>
-
           <div class="cd-item">
             <div class="cd-label">WhatsApp (India)</div>
             <div class="cd-value">
               <a href="https://wa.me/916366007781">+91 636 600 7781</a>
             </div>
           </div>
-
           <div class="cd-item">
             <div class="cd-label">Based In</div>
             <div class="cd-value">India</div>
           </div>
-
         </div>
       </div>
 
@@ -738,25 +705,19 @@ footer{ background:var(--text-dark); color:white; padding:60px 60px 30px; }
           <button class="form-submit" type="button">Start Your Journey</button>
         </form>
       </div>
-
     </div>
-
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     FOOTER
-═══════════════════════════════════ -->
+<!-- FOOTER -->
 <footer>
   <div class="footer-top">
-
     <div>
       <div class="fb-title"><span>IN</span>DIA CALLING</div>
       <p class="fb-desc">
         Curated journeys to the heart of India.
       </p>
     </div>
-
     <div class="footer-col">
       <h4>Navigate</h4>
       <ul>
@@ -766,7 +727,6 @@ footer{ background:var(--text-dark); color:white; padding:60px 60px 30px; }
         <li><a href="#about">About Us</a></li>
       </ul>
     </div>
-
     <div class="footer-col">
       <h4>Connect</h4>
       <ul>
@@ -776,9 +736,7 @@ footer{ background:var(--text-dark); color:white; padding:60px 60px 30px; }
         <li><a href="#contact">Enquire Now</a></li>
       </ul>
     </div>
-
   </div>
-
   <div class="footer-bottom">
     <div>© 2026 India Calling</div>
     <div>Crafted with love for Filipino wanderers</div>
