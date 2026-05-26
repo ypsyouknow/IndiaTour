@@ -80,40 +80,24 @@ nav.scrolled{
   position:absolute; inset:0;
   background: linear-gradient(
     to bottom,
-    rgba(245,230,200,0.55) 0%,
-    rgba(245,230,200,0.35) 50%,
-    rgba(245,230,200,0.65) 100%
+    rgba(255,255,255,0.75) 0%,
+    rgba(255,255,255,0.60) 50%,
+    rgba(255,255,255,0.80) 100%
   );
-}
-.hero-deco{
-  position:absolute; inset:0; pointer-events:none; opacity:0.04;
-  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%238b1a1a' fill-opacity='1'%3E%3Cpath d='M40 0 L43 37 L40 40 L37 37 Z M40 80 L43 43 L40 40 L37 43 Z M0 40 L37 37 L40 40 L37 43 Z M80 40 L43 37 L40 40 L43 43 Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 .hero-content{
   position:relative; z-index:2; text-align:center;
-  padding:140px 40px 100px; max-width:900px;
+  padding:100px 40px 100px; max-width:900px;
   animation: fadeUp 1.2s ease both;
 }
 @keyframes fadeUp{
   from{ opacity:0; transform:translateY(40px); }
   to{ opacity:1; transform:translateY(0); }
 }
-.hero-eyebrow{
-  font-family:'Cinzel',serif; font-size:0.75rem; letter-spacing:0.35em;
-  text-transform:uppercase; color:var(--mid-brown); margin-bottom:20px;
-  animation: fadeUp 1.2s 0.2s ease both;
-  text-shadow: 0 1px 8px rgba(255,255,255,0.6);
-}
 .hero-logo{
   max-width:420px; height:auto; margin:0 auto 24px;
   animation: fadeUp 1.2s 0.3s ease both;
   filter: drop-shadow(0 4px 24px rgba(44,24,16,0.18));
-}
-.hero-subtitle{
-  font-family:'Cinzel',serif; font-size:0.75rem; letter-spacing:0.35em;
-  color:var(--mid-brown); text-transform:uppercase; margin-bottom:16px;
-  animation: fadeUp 1.2s 0.5s ease both;
-  text-shadow: 0 1px 8px rgba(255,255,255,0.6);
 }
 .hero-quote{
   font-family:'Cormorant Garamond',serif; font-style:italic;
@@ -392,16 +376,6 @@ footer{ background:var(--text-dark); color:white; padding:60px 60px 30px; }
   .hero-logo{ max-width:300px; }
   .hero-quote{ font-size:1rem; }
 }
-.hero-bg::after{
-  content:'';
-  position:absolute; inset:0;
-  background: linear-gradient(
-    to bottom,
-    rgba(255,255,255,0.75) 0%,
-    rgba(255,255,255,0.60) 50%,
-    rgba(255,255,255,0.80) 100%
-  );
-}
 </style>
 </head>
 <body>
@@ -423,7 +397,6 @@ footer{ background:var(--text-dark); color:white; padding:60px 60px 30px; }
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg"></div>
-  <div class="hero-deco"></div>
   <div class="hero-content">
     <img src="logo.png" alt="India Calling" class="hero-logo">
     <div class="hero-quote">
