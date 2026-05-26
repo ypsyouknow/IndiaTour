@@ -22,6 +22,8 @@
   --text-dark:#1a0f0a;
   --text-mid:#4a3020;
   --text-light:#7a6050;
+  /* Pillars section bg color */
+  --pillars-bg:#f5f0e8;
 }
 
 *{ margin:0; padding:0; box-sizing:border-box; }
@@ -70,18 +72,29 @@ nav.scrolled{
   min-height:100vh; position:relative;
   display:flex; align-items:center; justify-content:center; overflow:hidden;
 }
+
+/* Hero background: the uploaded Indian monuments watercolor image */
 .hero-bg{
   position:absolute; inset:0;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(201,150,58,0.28), transparent 35%),
-    radial-gradient(circle at 80% 80%, rgba(139,26,26,0.2), transparent 35%),
-    radial-gradient(circle at 50% 50%, rgba(245,240,232,0.9), transparent 70%),
-    var(--cream);
+  background: url('1779776433390_WhatsApp_Image_2026-05-25_at_5_08_56_PM.jpeg') center/cover no-repeat;
 }
+/* Warm overlay so text stays readable, preserving that cream+pink+orange+blue palette */
+.hero-bg::after{
+  content:'';
+  position:absolute; inset:0;
+  background: linear-gradient(
+    to bottom,
+    rgba(245,230,200,0.55) 0%,
+    rgba(245,230,200,0.35) 50%,
+    rgba(245,230,200,0.65) 100%
+  );
+}
+
 .hero-deco{
-  position:absolute; inset:0; pointer-events:none; opacity:0.07;
+  position:absolute; inset:0; pointer-events:none; opacity:0.04;
   background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%238b1a1a' fill-opacity='1'%3E%3Cpath d='M40 0 L43 37 L40 40 L37 37 Z M40 80 L43 43 L40 40 L37 43 Z M0 40 L37 37 L40 40 L37 43 Z M80 40 L43 37 L40 40 L43 43 Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
+
 .hero-content{
   position:relative; z-index:2; text-align:center;
   padding:140px 40px 100px; max-width:900px;
@@ -93,25 +106,40 @@ nav.scrolled{
 }
 .hero-eyebrow{
   font-family:'Cinzel',serif; font-size:0.75rem; letter-spacing:0.35em;
-  text-transform:uppercase; color:var(--text-light); margin-bottom:20px;
+  text-transform:uppercase; color:var(--mid-brown); margin-bottom:20px;
   animation: fadeUp 1.2s 0.2s ease both;
+  text-shadow: 0 1px 8px rgba(255,255,255,0.6);
 }
 .hero-logo{
   max-width:420px;
   height:auto;
   margin:0 auto 24px;
   animation: fadeUp 1.2s 0.3s ease both;
+  /* slight drop shadow so logo pops on the image */
+  filter: drop-shadow(0 4px 24px rgba(44,24,16,0.18));
 }
 .hero-subtitle{
   font-family:'Cinzel',serif; font-size:0.75rem; letter-spacing:0.35em;
-  color:var(--text-light); text-transform:uppercase; margin-bottom:40px;
+  color:var(--mid-brown); text-transform:uppercase; margin-bottom:16px;
   animation: fadeUp 1.2s 0.5s ease both;
+  text-shadow: 0 1px 8px rgba(255,255,255,0.6);
 }
-.hero-tagline{
-  font-family:'Cormorant Garamond',serif; font-size:clamp(1.2rem,2.4vw,1.7rem);
-  font-style:italic; line-height:1.8; color:var(--mid-brown);
-  margin:44px 0 50px; animation: fadeUp 1.2s 0.6s ease both;
+
+/* ── QUOTE IN HERO (moved from intro) ── */
+.hero-quote{
+  font-family:'Cormorant Garamond',serif; font-style:italic;
+  font-size:clamp(1.05rem,2vw,1.35rem); line-height:1.75;
+  color:var(--dark-brown);
+  background: rgba(250,247,242,0.72);
+  backdrop-filter: blur(4px);
+  border-left: 3px solid var(--gold);
+  padding: 16px 24px;
+  margin: 28px auto 36px;
+  max-width: 640px;
+  text-align: left;
+  animation: fadeUp 1.2s 0.55s ease both;
 }
+
 .hero-cta-group{
   display:flex; justify-content:center; gap:16px;
   animation: fadeUp 1.2s 0.7s ease both;
@@ -122,7 +150,7 @@ nav.scrolled{
 }
 .btn-primary{ background:var(--deep-red); color:white; }
 .btn-primary:hover{ background:var(--dark-brown); transform:translateY(-2px); box-shadow:0 8px 24px rgba(139,26,26,0.3); }
-.btn-outline{ border:1px solid var(--dark-brown); color:var(--text-dark); }
+.btn-outline{ border:1px solid var(--dark-brown); color:var(--text-dark); background:rgba(250,247,242,0.7); }
 .btn-outline:hover{ background:var(--dark-brown); color:white; transform:translateY(-2px); }
 
 /* ── SECTION COMMONS ── */
@@ -151,26 +179,9 @@ nav.scrolled{
 .intro-layout{
   display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;
 }
-.intro-image-stack{ position:relative; }
-.intro-img-main{
-  width:100%; aspect-ratio:3/4; object-fit:cover;
-  border:none; display:block;
-}
-.intro-img-accent{
-  position:absolute; width:55%; aspect-ratio:1/1; object-fit:cover;
-  bottom:-30px; right:-30px;
-  border:6px solid var(--warm-white);
-  box-shadow:0 20px 50px rgba(0,0,0,0.15);
-}
-.intro-quote{
-  margin-top:30px;
-  font-family:'Cormorant Garamond',serif; font-style:italic;
-  font-size:1.3rem; line-height:1.7; color:var(--mid-brown);
-  border-left:3px solid var(--gold); padding-left:20px;
-}
 
 /* ── PILLARS ── */
-#pillars{ background:var(--cream); }
+#pillars{ background:var(--pillars-bg); }
 .pillars-header{ text-align:center; margin-bottom:70px; }
 .pillars-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:0; }
 .pillar-card{
@@ -271,25 +282,49 @@ nav.scrolled{
 /* ── ABOUT ── */
 #about{ background:var(--warm-white); }
 .about-header{ text-align:center; margin-bottom:70px; }
+
+/* Story section — no image, text-only layout */
+.about-story{
+  max-width:760px; margin:0 auto 90px;
+}
+.about-story .section-label{ text-align:center; }
+.about-story .section-title{ text-align:center; margin-bottom:32px; }
+.about-story .section-body{ margin-top:16px; }
+.about-quote{
+  font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.35rem;
+  line-height:1.75; color:var(--mid-brown); border-left:3px solid var(--gold);
+  padding-left:22px; margin:30px 0;
+}
+.about-signature{ font-family:'Dancing Script',cursive; font-size:2.2rem; color:var(--mid-brown); margin-top:30px; }
+
+/* ── TEAM CARDS ── */
 .about-cards{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:0; margin-bottom:80px; }
 .about-card{
   padding:50px 40px; border-right:1px solid rgba(201,150,58,0.2);
   position:relative;
 }
 .about-card:last-child{ border-right:none; }
+
+/* Portrait: circle, face-crop, consistent */
 .about-card-portrait{
-  width:100px; height:100px; border-radius:50%; object-fit:cover;
+  width:110px; height:110px; border-radius:50%; object-fit:cover;
+  object-position: center top; /* focus on face */
   border:3px solid var(--gold); margin-bottom:24px; display:block;
 }
-.about-card-icon{
-  width:100px; height:100px; border-radius:50%; background:var(--cream);
-  display:flex; align-items:center; justify-content:center;
-  font-size:2.5rem; margin-bottom:24px; border:3px solid rgba(201,150,58,0.3);
+/* Shivaay centre */
+.card-shivaay .about-card-portrait{
+  margin-left:auto; margin-right:auto;
+  filter: grayscale(100%);
 }
+
 .about-card-role{
   font-family:'Cinzel',serif; font-size:0.62rem; letter-spacing:0.25em;
   text-transform:uppercase; color:var(--gold); margin-bottom:10px;
 }
+.card-shivaay .about-card-role,
+.card-shivaay .about-card-name,
+.card-shivaay .about-card-bio{ text-align:center; }
+
 .about-card-name{
   font-family:'Cinzel',serif; font-size:1.5rem; color:var(--dark-brown);
   margin-bottom:18px;
@@ -301,20 +336,6 @@ nav.scrolled{
 .about-card-accent{
   position:absolute; top:0; left:0; right:0; height:3px;
   background:linear-gradient(to right, var(--gold), transparent);
-}
-.about-full{ display:grid; grid-template-columns:1fr 1.4fr; gap:80px; align-items:center; }
-.about-portrait-frame{ position:relative; }
-.about-portrait-frame img{ width:100%; aspect-ratio:3/4; object-fit:cover; display:block; }
-.about-portrait-deco{
-  position:absolute; top:-20px; left:-20px;
-  width:60%; height:60%; border:2px solid rgba(201,150,58,0.4);
-  pointer-events:none;
-}
-.about-signature{ font-family:'Dancing Script',cursive; font-size:2.2rem; color:var(--mid-brown); margin-top:30px; }
-.about-quote{
-  font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.35rem;
-  line-height:1.75; color:var(--mid-brown); border-left:3px solid var(--gold);
-  padding-left:22px; margin:30px 0;
 }
 
 /* ── CONTACT ── */
@@ -370,49 +391,18 @@ footer{ background:var(--text-dark); color:white; padding:60px 60px 30px; }
   nav{ padding:16px 20px; }
   .nav-links{ display:none; }
   .section-inner, .journey-inner{ padding:70px 24px; grid-template-columns:1fr; }
-  .intro-layout, .about-full, .contact-layout{ grid-template-columns:1fr; gap:40px; }
+  .intro-layout, .contact-layout{ grid-template-columns:1fr; gap:40px; }
   .pillars-grid{ grid-template-columns:1fr; }
   .pillar-card{ border-right:none; border-bottom:1px solid rgba(201,150,58,0.2); }
   .about-cards{ grid-template-columns:1fr; }
   .about-card{ border-right:none; border-bottom:1px solid rgba(201,150,58,0.15); }
-  .intro-img-accent{ display:none; }
   .journey-overlay-card{ display:none; }
   .hero-cta-group{ flex-direction:column; }
   .form-row{ grid-template-columns:1fr; }
   .footer-top{ grid-template-columns:1fr; }
-  .hero-logo{ max-width:320px; }
+  .hero-logo{ max-width:300px; }
+  .hero-quote{ font-size:1rem; }
 }
-
-/* ── HERO ── */
-#hero{
-  min-height:100vh; 
-  position:relative;
-  display:flex; 
-  align-items:center; 
-  justify-content:center; 
-  overflow:hidden;
-}
-
-.hero-bg{
-  position:absolute; 
-  inset:0;
-  background: url('HERO BG.jpeg') center/cover no-repeat;
-  filter: brightness(0.85) contrast(1.1); /* Optional - adjust if needed */
-}
-.intro-image-stack {
-  position: relative;
-}
-
-.intro-img-main{
-  width: 100%;
-  height: auto;
-  max-height: 620px;
-  object-fit: contain;
-  border: none;
-  display: block;
-  background: #f5f0e8;
-}
-/* Remove the old gradient background if you want pure image */
 </style>
 </head>
 <body>
@@ -424,28 +414,27 @@ footer{ background:var(--text-dark); color:white; padding:60px 60px 30px; }
     <div class="tagline">Beyond Borders · Beyond Ordinary</div>
   </div>
   <ul class="nav-links">
-    <li><a href="#intro">Our Story</a></li>
-    <li><a href="#journey">Our Journey</a></li>
-    <li><a href="#about">About Us</a></li>
+    <li><a href="#intro">About India Calling</a></li>
+    <li><a href="#journey">Upcoming Journeys</a></li>
+    <li><a href="#about">Our Journey</a></li>
     <li><a href="#contact" class="nav-cta">Enquire</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
-<!-- HERO -->
+<!-- HERO — full bleed watercolor monuments image -->
 <section id="hero">
   <div class="hero-bg"></div>
   <div class="hero-deco"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow">Philippines → India · October 2026</div>
-    
-    <!-- Logo Image -->
+
+    <!-- Logo -->
     <img src="logo.png" alt="India Calling" class="hero-logo">
-    
-    <div class="hero-subtitle">Beyond Borders · Beyond Ordinary</div>
-    <p class="hero-tagline">
-      Curated journeys through culture,<br>wellness & refined Indian experiences.
-    </p>
+
+    <!-- Quote moved here from intro section -->
+    <div class="hero-quote">
+      "The most meaningful journeys are the ones that reconnect us not only with new cultures, but also with ourselves."
+    </div>
+
     <div class="hero-cta-group">
       <a href="#journey" class="btn-primary">Explore the Journey</a>
       <a href="#about" class="btn-outline">Meet the Team</a>
@@ -457,8 +446,9 @@ footer{ background:var(--text-dark); color:white; padding:60px 60px 30px; }
 <section id="intro">
   <div class="section-inner">
     <div class="intro-layout">
-      <div class="intro-image-stack">
-        <img src="monuments.jpg" alt="India Monuments" class="intro-img-main">
+      <div>
+        <!-- Left side: kept as image slot for monuments.jpg -->
+        <img src="monuments.jpg" alt="India Monuments" style="width:100%;height:auto;max-height:620px;object-fit:contain;background:#f5f0e8;display:block;">
       </div>
 
       <div>
@@ -479,9 +469,6 @@ footer{ background:var(--text-dark); color:white; padding:60px 60px 30px; }
           From heritage cities and timeless traditions to mindful experiences and refined
           stays, each journey is designed to help you truly <em>feel</em> India.
         </p>
-        <div class="intro-quote" style="margin-top:30px;">
-          "The most meaningful journeys are the ones that reconnect us not only with new cultures, but also with ourselves."
-        </div>
       </div>
     </div>
   </div>
@@ -556,7 +543,7 @@ footer{ background:var(--text-dark); color:white; padding:60px 60px 30px; }
 
     <div class="journey-visual">
       <div class="journey-img-frame">
-        <img src="https://images.unsplash.com/photo-1564507592333-c60657eea523?q=80&w=1200&auto=format&fit=crop" alt="Taj Mahal">
+        <img src="Upcoming Journey.jpeg" alt="Monuments">
       </div>
       <div class="journey-overlay-card">
         <div class="joc-stat">October 2026</div>
@@ -569,42 +556,36 @@ footer{ background:var(--text-dark); color:white; padding:60px 60px 30px; }
 <!-- ABOUT -->
 <section id="about">
   <div class="section-inner">
-     <!-- Story Behind India Calling -->
-    <div class="about-full">
-      <div class="about-portrait-frame">
-        <img src="DEE.jpeg" alt="Dee Sharma">
-      </div>
-      <div>
-        <div class="section-label">The Story Behind India Calling</div>
-        <h2 class="section-title">The Story<br><span class="accent">Behind the Call</span></h2>
-        <p class="section-body">
-          India Calling was born from a deep love for India, travel, culture, and meaningful human connection.
-        </p>
-        <p class="section-body" style="margin-top:20px;">
-          Having lived across countries and experienced different cultures, I realized that the most memorable journeys are not just about places we visit, but about how those places make us feel. India, with all its richness, warmth, beauty, chaos, traditions, spirituality, and stories, has always had a way of touching people deeply.
-        </p>
-        <p class="section-body" style="margin-top:20px;">
-          Through India Calling, I wanted to create journeys that go beyond sightseeing — experiences that allow people to slow down, connect, discover, and truly feel the soul of India with comfort, authenticity, and heart.
-        </p>
-        <p class="section-body" style="margin-top:20px;">
-          Because sometimes, travel doesn’t just change where we are… it reconnects us with who we are.
-        </p>
-        <div class="about-quote">
-          “I’m not just planning this journey,<br>I’m taking it with you.”
-        </div>
-        <div class="about-signature">— Dee</div>
-      </div>
-    </div>
-    <br><br><br>
 
-     <!-- Team Introduction -->
+    <!-- Story Behind India Calling — NO image, text only, one heading -->
+    <div class="about-story">
+      <h2 class="section-title">The Story<br><span class="accent">Behind the Call</span></h2>
+      <p class="section-body">
+        India Calling was born from a deep love for India, travel, culture, and meaningful human connection.
+      </p>
+      <p class="section-body" style="margin-top:20px;">
+        Having lived across countries and experienced different cultures, I realized that the most memorable journeys are not just about places we visit, but about how those places make us feel. India, with all its richness, warmth, beauty, chaos, traditions, spirituality, and stories, has always had a way of touching people deeply.
+      </p>
+      <p class="section-body" style="margin-top:20px;">
+        Through India Calling, I wanted to create journeys that go beyond sightseeing — experiences that allow people to slow down, connect, discover, and truly feel the soul of India with comfort, authenticity, and heart.
+      </p>
+      <p class="section-body" style="margin-top:20px;">
+        Because sometimes, travel doesn't just change where we are… it reconnects us with who we are.
+      </p>
+      <div class="about-quote">
+        "I'm not just planning this journey,<br>I'm taking it with you."
+      </div>
+      <div class="about-signature">— Dee</div>
+    </div>
+
+    <!-- Team -->
     <div class="about-header">
       <div class="section-label">The People Behind India Calling</div>
       <h2 class="section-title">We're not guides.<br><span class="accent">We're fellow travellers.</span></h2>
     </div>
 
-    <!-- Team Cards -->
     <div class="about-cards">
+      <!-- Dee -->
       <div class="about-card">
         <div class="about-card-accent"></div>
         <img class="about-card-portrait" src="DEE.jpeg" alt="Dee Sharma">
@@ -616,18 +597,20 @@ footer{ background:var(--text-dark); color:white; padding:60px 60px 30px; }
         </p>
       </div>
 
+      <!-- Sid -->
       <div class="about-card">
         <div class="about-card-accent"></div>
-        <img class="about-card-portrait" src="SID.jpeg" alt="Captain Siddhartha “Sid” Sharma">
+        <img class="about-card-portrait" src="SID.jpeg" alt="Captain Siddhartha Sid Sharma">
         <div class="about-card-role">Co-Founder & Journey Partner</div>
-        <div class="about-card-name">Captain Siddhartha “Sid” Sharma</div>
+        <div class="about-card-name">Captain Siddhartha "Sid" Sharma</div>
         <p class="about-card-bio">
-          My husband Sid spent 13 years sailing across the world as a Master Mariner before moving into the corporate side of the shipping industry, where he now heads operations for a shipping company in Manila.<br><br>
+          My husband Sid spent 16 years sailing across the world as a Master Mariner before moving into the corporate side of the shipping industry, where he now heads operations for a shipping company in Manila.<br><br>
           A passionate Harley rider and explorer at heart, he shares the same love for travel, adventure, and meaningful experiences that inspired India Calling.
         </p>
       </div>
 
-      <div class="about-card">
+      <!-- Shivaay — centred, B&W portrait -->
+      <div class="about-card card-shivaay">
         <div class="about-card-accent"></div>
         <img class="about-card-portrait" src="SHIVAY.jpeg" alt="Shivaay Sharma">
         <div class="about-card-role">Chief Happiness Officer</div>
@@ -639,7 +622,6 @@ footer{ background:var(--text-dark); color:white; padding:60px 60px 30px; }
       </div>
     </div>
 
-   
   </div>
 </section>
 
@@ -706,7 +688,7 @@ footer{ background:var(--text-dark); color:white; padding:60px 60px 30px; }
               <option>Select a Journey</option>
               <option>Golden Triangle — October 2026</option>
               <option>South India — 2027</option>
-              <option>Rajasthan & Varanasi — 2027</option>
+              <option>Rajasthan &amp; Varanasi — 2027</option>
               <option>Bespoke Private Journey</option>
             </select>
           </div>
@@ -725,7 +707,7 @@ footer{ background:var(--text-dark); color:white; padding:60px 60px 30px; }
 <footer>
   <div class="footer-top">
     <div>
-      <div class="fb-title"><span>IN</span>DIA CALLING</div>
+      <div class="fb-title">IN<span>D</span>IA CALLING</div>
       <p class="fb-desc">
         Curated journeys to the heart of India.
       </p>
@@ -733,10 +715,10 @@ footer{ background:var(--text-dark); color:white; padding:60px 60px 30px; }
     <div class="footer-col">
       <h4>Navigate</h4>
       <ul>
-        <li><a href="#intro">Our Story</a></li>
+        <li><a href="#intro">About India Calling</a></li>
         <li><a href="#pillars">Our Pillars</a></li>
-        <li><a href="#journey">Upcoming Journey</a></li>
-        <li><a href="#about">About Us</a></li>
+        <li><a href="#journey">Upcoming Journeys</a></li>
+        <li><a href="#about">Our Journey</a></li>
       </ul>
     </div>
     <div class="footer-col">
